@@ -1,134 +1,30 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Pedro Veloso - Computational Design</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--link rel="stylesheet" type="text/css" href="style.css"-->  <!-- Insert StyleSheet -->
-    <!--link rel="icon" href="cool-icon.png"-->                    <!-- Insert Icon -->
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-    <style type="text/css">
-        body {
-            margin: 0;
-            background-color: #32373b;
-        }
-
-        
-        /*http://dotcolon.net/DL/font/aileron.zip*/
-        @font-face {
-            font-family: 'aileronLight';
-            src: url('fonts/Aileron-Light.otf'); 
-            src: 
-                local('Aileron Light'),
-                url('fonts/Aileron-Light.otf')  
-                format('opentype');
-            }
-
-       @font-face {
-            font-family: 'aileronRegular';
-            src: url('fonts/Aileron-Regular.otf'); 
-            src: 
-                local('Aileron Regular'),
-                url('fonts/Aileron-Regular.otf')  
-                format('opentype');
-            }
-
-        /* NAV BAR */
-        .nav-bar {
-            width: 100%;
-            height: 100px;
-            margin: 0;
-            /*background: black;*/
-
-            /* Toggle between static and sticky */
-            position: sticky;
-            position: -webkit-sticky; /*for safari*/
-            top: 0p;
-
-        }
-
-        .nav-bar > .element {
-            width: 24.5%; /* deals with the rounding errors*/
-            line-height: 100px;
-            text-align: center;
-            color: #A1A1A1;
-            display: inline-block;
-            margin: 0;
-            font-family: 'aileronLight';
-            font-size: 16px;
-            text-decoration: none;
-        }
-
-        .description {
-            line-height: 18px;
-            margin-left: 20px; /*margin right is implicit*/
-            margin-right: 50px; /*margin right is implicit*/
-            text-align: center;
-            color: #A1A1A1;
-            display: inline-block;
-            margin: 0;
-            font-family: 'aileronLight';
-            font-size: 16px;
-            text-decoration: none;
-        }
-
-        .nav-bar > .element:hover { 
-            text-decoration: underline;
-        }   
-
-        .img{
-            position: relative;
-            margin-top: 100px;
-            margin-left: 20px;
-            width: 200px;
-            background-position:50% 50%;
-            
-        }
-        .nav-bar >.icon{
-            margin: 0;
-            position: absolute;
-            height: 100px;      
-        }
-        .box{
-/*            width: 100%;*/
-        }
-
-        }
-        .input_style{
-            text-
-        }
-
-        /* BODY */
-
-        .content {
-            width: 80%;
-            margin-left: 10%; /*margin right is implicit*/
-        }
-
-    </style>
-
     <div class="nav-bar">
-        <img class = "icon" src="./images/pv_icon_low.png">
-        <a class="element"> about </a>
+        <a href="index.html"><img class="icon" src="./images/pv_icon_low.png"></a>
+        <a class="element" href="about.html"> about </a>
         <a class="element"> design </a> <!--href="nav_bar.html" -->
         <a class="element"> research </a>
         <a class="element"> teaching </a>
     </div>
-
-    <div class="box">
-    	<img class="img" src="./images/profile_wall.jpg">
-    </div class="description">
-        My name is Pedro Veloso. I am an architect and computational designer positioned in the intersection between artificial intelligence and creativity. He investigates new forms of design intelligence supported by cybernetics, classical AI, bio-inspired AI, agent-based modeling and machine learning. 
-        As a researcher, I participated in the main events of computational design, organized by international associations such as ACADIA, ASCAAD, CAAD Futures, and SIGraDi. He has presented and published multiple research papers, one of which – “An Archaeology of Cybernetic Diagrams”, 2013 – received the award for best paper and was later extended and published in IJAC. He developed a variety of digital fabrication artworks that were exhibited in the SIGraDi conference, such as the paramanga/paracoco pavilion (2012) and the slime mold network (2016). He was the workshop chair of the CAAD Futures conference in 2015 and is currently one of the reviewers for the SIGraDI conferences. 
-        I coauthored two books (“Projeto, Ética e Autonomia”, 2012; “Nós da Arquitetura”, 2014) and contributed with chapters and texts for three other books (“The Laboratory of Automation and Prototyping for Architecture and Construction”, 2013; “Didáctica Proyectual”, 2013; “Frontiers of Science, and Technology”, 2017). 
-        I am an design educator with a long teaching experience in architecture schools, where he had courses in geometric and parametric modeling, mathematics, contemporary architecture and research methods. He also has organized and conducted workshops in parametric modeling and digital fabrication for different universities and architectural events. At Carnegie Mellon University, he is currently a graduate instructor on programming and artificial intelligence for design.
-        I have experience with design competitions. In 2005, he coauthored a proposal for the environmental rehabilitation of the Brasilia Palace Hotel, designed by Oscar Niemeyer. This proposal received the PROCEL Prize of energy efficiency and a honorable mention in the Iberoamerican Student Competition of Bioclimatic Architecture. The proposal was exhibited in the international itinerant exhibition EKO project Brazil-Italy, published in an architectural journal and in the local news. As a professional, he also participated in competitions with proposals for the Venice Lagoon Park (2007) and for the new Headquarters of the National Confederation of Municipalities in Brasilia (2011). 
-        I am also a computational consultant for construction and design firms, developing algorithmic workflows for interactive installations, digital fabrication and design customization. For example, he consulted for the Ultra Low Res Studio, developing an algorithm for the wiring of the light wall at the Carnegie Library of Pittsburgh Knoxville and an algorithm to generate the cluster of projection panels for the stage of the Abstractions developer’s conference.
-        I hold a bachelor of architecture and urban design from the Universidade de Brasília and a M.Sc in architectural design from the Universidade de São Paulo. Currently, he is a Ph.D. candidate in the computational design program, investigating the application of AI in early design exploration, such as in architectural composition, diagramming and space planning.
+    <div class="banner">
+        <div class="img">
+            <img src="./images/pedro_cyber_gan.png">
+        </div>
+        <div class="description">
+            </p>
+                Computational designer and architect interested in the intersection between artificial intelligence and design. My research and teaching address topics such as Cybernetics, classical AI, bio-inspired AI, agent-based modeling, and Machine learning for design exploration. I develop generative systems to address problems in the different scales of the built environment. Currently, I investigate the application of AI in early spatial exploration, such as in architectural composition and space planning. 
+            </p>
+        </div>
     </div>
 
     <!--<script type="text/javascript" src="interactions.js"></script>-->   <!-- Insert JQuery Script -->

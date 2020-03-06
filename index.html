@@ -6,110 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Pedro Veloso - Computational Design</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--link rel="stylesheet" type="text/css" href="style.css"-->  <!-- Insert StyleSheet -->
+    <link rel="stylesheet" type="text/css" href="style.css">
     <!--link rel="icon" href="cool-icon.png"-->                    <!-- Insert Icon -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-    <style type="text/css">
-        body {
-            margin: 0;
-            background-color: #32373b;
-        }
-
-        
-        /*http://dotcolon.net/DL/font/aileron.zip*/
-        @font-face {
-            font-family: 'aileronLight';
-            src: url('fonts/Aileron-Light.otf'); 
-            src: 
-                local('Aileron Light'),
-                url('fonts/Aileron-Light.otf')  
-                format('opentype');
-            }
-
-       @font-face {
-            font-family: 'aileronRegular';
-            src: url('fonts/Aileron-Regular.otf'); 
-            src: 
-                local('Aileron Regular'),
-                url('fonts/Aileron-Regular.otf')  
-                format('opentype');
-            }
-
-        /* NAV BAR */
-        .nav-bar {
-            width: 100%;
-            height: 100px;
-            margin: 0;
-            /*background: black;*/
-
-            /* Toggle between static and sticky */
-            position: sticky;
-            position: -webkit-sticky; /*for safari*/
-            top: 0p;
-
-        }
-
-        .nav-bar > .element {
-            width: 24.5%; /* deals with the rounding errors*/
-            line-height: 100px;
-            text-align: center;
-            color: #A1A1A1;
-            display: inline-block;
-            margin: 0;
-            font-family: 'aileronLight';
-            font-size: 16px;
-            text-decoration: none;
-        }
-
-        .nav-bar > .element:hover { 
-            text-decoration: underline;
-        }   
-
-        .img{
-            position: relative;
-            width: 2000px;
-            background-position:50% 50%;
-            
-        }
-        .nav-bar >.icon{
-            margin: 0;
-            position: absolute;
-            height: 100px;      
-        }
-        .box{
-/*            width: 100%;*/
-        }
-        .title{
-            line-height: 150px;
-            font-size: 150px;
-            font-family: 'aileronLight';
-            text-align: center;
-            color: #d9252e;
-            margin-top: 50px ;
-            margin-bottom: 0em ;
-            padding: 0;
-            border: 0;
-            margin: 0;
-/*            width: 100%;*/
-
-        }
-        .input_style{
-            text-
-        }
-
-        /* BODY */
-
-        .content {
-            width: 80%;
-            margin-left: 10%; /*margin right is implicit*/
-        }
-
-    </style>
-
     <div class="nav-bar">
-        <img class = "icon" src="./images/pv_icon_low.png">
+        <a href="index.html"><img class="icon" src="./images/pv_icon_low.png"></a>
         <a class="element" href="about.html"> about </a>
         <a class="element"> design </a> <!--href="nav_bar.html" -->
         <a class="element"> research </a>
@@ -121,8 +24,8 @@
     	<!--p>Werewolfs are really cool!!!</p-->
     	<!--input class="input_style" type="text" name="hello" placeholder="type something here"-->
     </div>
-    <div class="title">
-        <p>design<br>+<br>intelligence</p>
+    <div class="around">
+        <p class="title">generative<br><br>design</p>
     </div>
 
     <!--<script type="text/javascript" src="interactions.js"></script>-->   <!-- Insert JQuery Script -->
