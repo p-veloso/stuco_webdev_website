@@ -2,33 +2,42 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Pedro Veloso - Computational Design</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <!--link rel="icon" href="cool-icon.png"-->                    <!-- Insert Icon -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Pedro Veloso - Computational Design</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<!--link rel="icon" href="cool-icon.png"-->                    <!-- Insert Icon -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+	</script>
+	<!--script>
+		window.Jquery ||
+				document.write('<script src="./assets/libraries/jquery.min.js"></script>');
+	</script-->
+	<script src="script.js"></script>
 </head>
 <body>
-    <div class="nav-bar">
-        <a href="index.html"><img class="icon" src="./images/pv_icon_low.png"></a>
-        <a class="element" href="about.html"> about </a>
-        <a class="element"> design </a> <!--href="nav_bar.html" -->
-        <a class="element"> research </a>
-        <a class="element"> teaching </a>
-    </div>
-
-    <div class="box">
-    	<!--img class="img" src="./images/fractal.png"-->
-    	<!--p>Werewolfs are really cool!!!</p-->
-    	<!--input class="input_style" type="text" name="hello" placeholder="type something here"-->
-    </div>
-    <div class="around">
-        <p class="title">generative<br><br>design</p>
-    </div>
-
-    <!--<script type="text/javascript" src="interactions.js"></script>-->   <!-- Insert JQuery Script -->
-
+	<div class="nav-bar">
+		<div class="dropdown">
+			<button onclick="myFunction()" class="dropbtn"></button>
+			<div id="myDropdown" class="dropdown-content">
+				<a href="#">Archive</a>
+				<a href="#">Blog</a>
+				<a href="#">About me</a>
+		  	</div>
+		</div>
+	</div>
+	<div class="screens">
+		<div class="screen1">
+			<img class="background-image" src="./images/discrete_gray.png">
+			<p class="text-fit">My name is Pedro Veloso. I am a computational designer, researcher and educator interested in the space between AI, architecture and games.</p>
+		</div>
+		<!--<script type="text/javascript" src="interactions.js"></script>-->   <!-- Insert JQuery Script -->
+		<div class="screen2">
+			<p class="text-fit2">
+				Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder - Placeholder
+			</p>
+		</div>
+	</div>
 </body>
 </html>

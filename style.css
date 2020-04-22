@@ -1,153 +1,196 @@
 /*http://dotcolon.net/DL/font/aileron.zip*/
 @font-face {
-    font-family: 'aileronLight';
-    src: url('fonts/Aileron-Light.otf'); 
-    src: 
-        local('Aileron Light'),
-        url('fonts/Aileron-Light.otf')  
-        format('opentype');
-    }
+	font-family: 'aileronLight';
+	src: url('fonts/Aileron-Light.otf'); 
+	src: 
+		local('Aileron Light'),
+		url('fonts/Aileron-Light.otf')  
+		format('opentype');
+	}
 
 @font-face {
-    font-family: 'aileronRegular';
-    src: url('fonts/Aileron-Regular.otf'); 
-    src: 
-        local('Aileron Regular'),
-        url('fonts/Aileron-Regular.otf')  
-        format('opentype');
-    }
+	font-family: 'aileronRegular';
+	src: url('fonts/Aileron-Regular.otf'); 
+	src: 
+		local('Aileron Regular'),
+		url('fonts/Aileron-Regular.otf')  
+		format('opentype');
+	}
 }
 
-html{
-    background-color: rgb(50, 50, 50);
-    height: 2000px;
+@font-face {
+	font-family: 'aileronBold';
+	src: url('fonts/Aileron-Bold.otf'); 
+	src: 
+		local('Aileron Bold'),
+		url('fonts/Aileron-Bold.otf')  
+		format('opentype');
+	}
 }
 
-body {
-    background-color: rgb(50, 50, 50);
+html, body {
+	background-color: rgb(255, 255, 255);
+	overflow: hidden;
 }
 
-.banner {
-    margin-top: 100px;
-    display: grid;
-    grid-template: repeat(2, 1fr) / repeat(4, 1fr);
-/*    grid-template-areas:
-        "empty bio bio img"
-        "link0 link1 link2 link3";*/
-}
-.box{
-/*            width: 100%;*/
-}
-.content {
-    width: 80%;
-    margin-left: 10%; /*margin right is implicit*/
-}
-.description {
-    padding: 10px;
-    background-color: rgba(60, 60, 60, .5);
-    grid-area: 1 / 2 / span 1 / span 1;
-    color: rgb(200, 200, 200);
-    font-family: 'aileronLight';
-    font-size: 16px;
-    
-}
-.empty{
-    grid-area: 1 / 1 / span 1 / span 1;
-    background-color: rgba(60, 60, 60, .5);
+body::-webkit-scrollbar{
+	display: none;
 }
 
-.img{
-    grid-area: 1 / 4 / span 1 / span 1;
-    /*position: relative;
-    margin-top: 100px;
-    margin-right: 20px;
-    margin-left: auto;
-    padding-right: 0px;
-    padding-left:1000px;
-    height: 50%;
-    background-position:50% 50%;*/
-    background-color: rgba(60, 60, 60, .5);
-}
-.input_style{
-    text-
-}
 .nav-bar {
-    width: 100%;
-    height: 100px;
-    margin: 0;
-    /*background: black;*/
-
-    /* Toggle between static and sticky */
-    position: fixed;
-    /*position: sticky;
-    position: -webkit-sticky;*/
-    top: 0px;
-
+	width: 100%;
+	height: 40px;
+	margin: 0;
+	background: white;
+	opacity: 0.5;
+	/* Toggle between static and sticky */
+	position: fixed;
+/*    position: sticky;
+	position: -webkit-sticky;*/
+	top: 0px;
+	z-index: 1;
 }
-.nav-bar > .element {
-    width: 24.5%; /* deals with the rounding errors*/
-    line-height: 100px;
-    text-align: center;
-    color: #A1A1A1;
-    display: inline-block;
-    margin: 0;
-    font-family: 'aileronLight';
-    font-size: 16px;
-    text-decoration: none;
+.screens{
+	scroll-snap-type: y mandatory;
+	scroll-snap-stop: always;
+	overflow-y: scroll;
+/*    overflow-y: hidden;
+*/    height: 100vh;
+}
+.screens::-webkit-scrollbar{
+	width: 12px;
+	background-color: #F5F5F5;
 }
 
-.nav-bar > .element:hover { 
-/*    text-decoration: underline;
-*/    color: rgba(180, 40, 40, 1);
-}   
+/*.screens div{
+	scroll-snap-align: start;
+}
+*/
+.screen1 {
+/*    background: #FFFFFF;*/    
+	scroll-snap-align: center;
+	position: relative;
+/*    margin-top: 50px;
+*/    padding: 0;
+	width: 100%;
+	overflow: auto;
+}
+.screen2 {
+	scroll-snap-align: center;
+	position: relative;
+	padding: 0;
+	width: 100%;
+	overflow: auto;
+}
 
-/*.nav-bar >*/
+@keyframes fadeInFromNone {
+	0% {
+		display: none;
+		opacity: 0;
+	}
+	1% {
+		display: block;
+		opacity: 0;
+	}
+	100% {
+		display: block;
+		opacity: 1;
+	}
+}
+
+.background-image {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	max-width: 100%;
+	float:right;
+	min-width: 1000px;
+	animation: fadeInFromNone 5s ease-out;
+}
+.text-fit {
+	position: absolute;
+	margin-top: 15%;
+	margin-left: 10%;
+	max-width: 50%;
+	line-height: 3vw;
+	font-size: 2.5vw; /*3calc(1px + 3vw);*/
+	font-family: 'aileronLight';
+	text-align: left;
+	color: #CD3F3E;
+}
+.text-fit2 {
+	position: relative;
+	margin-top: 15%;
+	margin-left: 10%;
+	max-width: 80%;
+	line-height: 3vw;
+	font-size: 2.5vw;
+	font-family: 'aileronLight';
+	text-align: left;
+	color: #CD3F3E;
+}
 .icon{
-    margin: 0;
-    position: absolute;
-    height: 100px;      
+	margin-top: 10px;
+	margin-left: 10%;
+	position: relative;
+	height: 30px; 
+	width: 30px;
+	opacity: 0.5;
 }
 .icon:hover{
-    height: 110px;  
+	opacity: 1; 
 }
 
-@keyframes example {
-  0%   {background-color: red;}
-  25%  {background-color: yellow;}
-  50%  {background-color: blue;}
-  100% {background-color: green;}
+/* Dropdown Button */
+.dropbtn {
+	position: relative;
+	background-image: url(../images/menu_flat.png);
+	background-size: 30px auto;
+    background-repeat: no-repeat;
+    background-position: 0px 0px; 
+	border: none;
+	cursor: crosshair;
+	height: 30px; 
+	width: 30px;
+	opacity: 0.5;
+	z-value: 2;
 }
 
-.around{
-    margin-top: 200px;
-    height:30em;
-    position:relative;
-    vertical-align: middle;
-}
-.title{
-/*    position: relative;               
-    top: 50%; 
-    bottom: 50%;
-*/  
-    vertical-align: middle;
-    width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 100px;
-    font-size: 150px;
-    font-family: 'aileronLight';
-    text-align: center;
-    color: rgba(40, 40, 40, 1);
-/*    margin-top: 300px ;
-    margin-bottom: 0em;*/
-    padding: 0;
-    border: 0;
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+
 }
 
-.title:hover{
-    color: rgba(180, 40, 40, 1);
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  margin-left: 10%;
+  top: 10%;
+  position: relative;
+/*  display: inline-block;
+*/}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: 135px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
 }
 
-/*.title.container{
-    display: table-cell;
-    vertical-align: middle;*/
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-family: 'aileronLight';
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+	color: #CD3F3E;
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
