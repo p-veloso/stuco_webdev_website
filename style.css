@@ -214,6 +214,8 @@ body::-webkit-scrollbar{
 
 #container{
 	position: relative;
+	margin-top: 50px;
+	margin-bottom: 100px;
 	margin-right: 10%;
 	margin-left: 10%;
 	padding: 0;
