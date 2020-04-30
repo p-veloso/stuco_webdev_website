@@ -1,0 +1,282 @@
+Dim p0 As Variant
+Dim p0s As Variant
+Dim p1a As Variant
+Dim p1b As Variant
+Dim p1s As Variant
+Dim angulorad As Double
+Dim olhox As Double
+Dim olhoy As Double
+Dim plav_pessoassentadas As AcadLayer
+Dim plav_linhadepiso As AcadLayer
+Dim plav_linhasdevisao As AcadLayer
+Dim plav_alturadoolho As AcadLayer
+Dim mylayer As AcadLayer
+
+Dim meubloco As AcadBlock
+Dim meublocoref As AcadBlockReference
+
+Dim insercao(0 To 2) As Double
+Dim insercaoh(0 To 2) As Double
+Dim insercaopl() As Double
+Dim insercao0(0 To 2) As Double
+
+Dim contador As Double
+Dim n As Integer
+Dim x As Double
+Dim h As Double
+Dim pessoaref As AcadBlockReference
+Dim pessoablock As AcadBlock
+Dim linhah As AcadLine
+Dim linhavisao As AcadLine
+Dim linhapiso As AcadLWPolyline
+
+
+Private Sub botaoresetar_Click()
+TextBoxolhox = 32
+TextBoxolhoy = 114
+End Sub
+
+Private Sub TextBoxolhoy_Change()
+
+End Sub
+
+Sub userform_initialize()
+
+TextBoxH.Value = 10
+TextBoxX.Value = 90
+TextBoxN.Value = 1
+TextBoxHs.Value = 10
+TextBoxXs.Value = 90
+TextBoxNs.Value = 1
+TextBoxCs.Value = 60
+TextBoxolhox = 32
+TextBoxolhoy = 114
+
+End Sub
+
+Private Sub botaop0_Click()
+    UserForm1.hide
+    p0 = ThisDrawing.Utility.GetPoint(, "Clique no ponto de visibilidade máxima:")
+    LabelP0.Caption = "x=" & Round(p0(0), 2) & "   " & "y=" & Round(p0(1), 2)
+    UserForm1.Show
+End Sub
+
+Private Sub botaop1a_Click()
+    UserForm1.hide
+    p1a = ThisDrawing.Utility.GetPoint(, "Clique no ponto do primeiro degrau:")
+    LabelP1a.Caption = "x=" & Round(p1a(0), 2) & "   " & "y=" & Round(p1a(1), 2)
+    LabelP1b.Caption = "x=" & Round(p1a(0), 2) + 0.9 & "   " & "y=" & Round(p1a(1), 2)
+    UserForm1.Show
+End Sub
+
+Private Sub botaop1b_Click()
+    UserForm1.hide
+    p1b = ThisDrawing.Utility.GetPoint(, "Clique no ponto inicial das fileiras:")
+    LabelP1b.Caption = "x=" & Round(p1b(0), 2) & "   " & "y=" & Round(p1b(1), 2)
+    LabelP1a.Caption = "x=" & Round(p1b(0), 2) - 0.9 & "   " & "y=" & Round(p1b(1), 2)
+    'queria que o p1a variant assumisse um valor em relacao ao p1b...mas tem que determinar a variant (0 to 2) primeiro
+    'p1a(0) = p1b(0) - 0.9
+    'p1a(1) = p1b(1)
+    'p1a(2) = p1b(2)
+    'UserForm1.Update
+    UserForm1.Show
+End Sub
+
+
+Private Sub gerar_Click()
+
+'1 verifica se os layers existem...e cria se necessário
+
+For Each mylayer In ThisDrawing.Layers
+    If mylayer.Name = "plav_linhasdevisao" Then GoTo linha1
+Next
+    Set plav_linhasdevisao = ThisDrawing.Layers.Add("plav_linhasdevisao")
+    'plav_linhasdevisao.TrueColor = Red
+linha1:
+
+For Each mylayer In ThisDrawing.Layers
+    If mylayer.Name = "plav_linhadepiso" Then GoTo linha2
+Next
+    Set plav_linhadepiso = ThisDrawing.Layers.Add("plav_linhadepiso")
+    'plav_linhadepiso.TrueColor = magenta
+linha2:
+
+For Each mylayer In ThisDrawing.Layers
+    If mylayer.Name = "plav_pessoassentadas" Then GoTo linha3
+Next
+    Set plav_pessoassentadas = ThisDrawing.Layers.Add("plav_pessoassentadas")
+    'plav_pessoassentadas.TrueColor = yellow
+linha3:
+
+For Each mylayer In ThisDrawing.Layers
+    If mylayer.Name = "plav_alturadoolho" Then GoTo linha4
+Next
+    Set plav_alturadoolho = ThisDrawing.Layers.Add("plav_alturadoolho")
+    'plav_alturadoolho.TrueColor = Red
+linha4:
+
+'2 insere os elementos da primeira fileira
+    olhox = Val(TextBoxolhox.Value) / 100
+    olhoy = Val(TextBoxolhoy.Value) / 100
+    insercao0(0) = 0
+    insercao0(1) = 0
+    insercao0(2) = 0
+    x = Val(TextBoxX.Value) / 100
+    h = Val(TextBoxH.Value) / 100
+    n = Int(TextBoxN.Value)
+    ReDim insercaopl(0 To n * 4 - 1)
+    'insere o primeiro espectador
+    insercao(0) = p1a(0) + olhox
+    insercao(1) = p1a(1) + olhoy
+    insercao(2) = 0
+    insercaoh(0) = insercao(0)
+    insercaoh(1) = insercao(1) + h
+    insercaoh(2) = insercao(2)
+    Set pessoaref = ThisDrawing.ModelSpace.InsertBlock(insercao, "pessoa", 1, 1, 1, 0)
+    pessoaref.Layer = "plav_pessoassentadas"
+    Set linhah = ThisDrawing.ModelSpace.AddLine(insercao, insercaoh)
+    linhah.Layer = "plav_alturadoolho"
+    Set linhavisao = ThisDrawing.ModelSpace.AddLine(insercao, p0)
+    linhavisao.Layer = "plav_linhasdevisao"
+    insercaopl(0) = p0(0)
+    insercaopl(1) = p1a(1)
+    insercaopl(2) = p1a(0)
+    insercaopl(3) = p1a(1)
+    
+'3 insere as próximas fileiras pelo metodo do angulo
+    For contador = 1 To n - 1
+        angulorad = 3.14159265 - ThisDrawing.Utility.AngleFromXAxis(p0, insercaoh)
+        insercao(0) = (p1a(0) + olhox) - (x * contador)
+        If insercao(1) > p0(1) + (p0(0) - insercao(0)) * Tan(angulorad) Then GoTo pula
+        insercao(1) = p0(1) + (p0(0) - insercao(0)) * Tan(angulorad)
+pula:
+        insercaoh(0) = insercao(0)
+        insercaoh(1) = insercao(1) + h
+        insercaopl(contador * 4) = insercaopl(contador * 4 - 2)
+        insercaopl(contador * 4 + 1) = insercao(1) - olhoy
+        insercaopl(contador * 4 + 2) = insercaopl(contador * 4) - x
+        insercaopl(contador * 4 + 3) = insercaopl(contador * 4 + 1)
+        Set pessoaref = ThisDrawing.ModelSpace.InsertBlock(insercao, "pessoa", 1, 1, 1, 0)
+        pessoaref.Layer = "plav_pessoassentadas"
+        Set linhah = ThisDrawing.ModelSpace.AddLine(insercao, insercaoh)
+        linhah.Layer = "plav_alturadoolho"
+        Set linhavisao = ThisDrawing.ModelSpace.AddLine(insercao, p0)
+        linhavisao.Layer = "plav_linhasdevisao"
+    Next contador
+'4 desenha o piso com os valores acumulados pela insercaopl
+    Set linhapiso = ThisDrawing.ModelSpace.AddLightWeightPolyline(insercaopl)
+    linhapiso.Layer = "plav_linhadepiso"
+'5 desenha o piso com os valores acumulados pela insercaopl
+    ZoomExtents
+    ThisDrawing.Regen (True)
+    
+End Sub
+    
+Private Sub botaop0s_Click()
+    UserForm1.hide
+    p0s = ThisDrawing.Utility.GetPoint(, "Clique no ponto de visibilidade máxima:")
+    LabelP0s.Caption = "x=" & Round(p0s(0), 2) & "   " & "y=" & Round(p0s(1), 2)
+    UserForm1.Show
+End Sub
+
+Private Sub botaop1s_Click()
+    UserForm1.hide
+    p1s = ThisDrawing.Utility.GetPoint(, "Clique no ponto de insercao da ultima fileira da serie anterior:")
+    LabelP1s.Caption = "x=" & Round(p1s(0), 2) & "   " & "y=" & Round(p1s(1), 2)
+    UserForm1.Show
+End Sub
+
+Private Sub gerars_Click()
+
+'1 verifica se os layers existem...e cria se necessário
+
+For Each mylayer In ThisDrawing.Layers
+    If mylayer.Name = "plav_linhasdevisao" Then GoTo linha1
+Next
+    Set plav_linhasdevisao = ThisDrawing.Layers.Add("plav_linhasdevisao")
+    'plav_linhasdevisao.TrueColor = Red
+linha1:
+
+For Each mylayer In ThisDrawing.Layers
+    If mylayer.Name = "plav_linhadepiso" Then GoTo linha2
+Next
+    Set plav_linhadepiso = ThisDrawing.Layers.Add("plav_linhadepiso")
+    'plav_linhadepiso.TrueColor = magenta
+linha2:
+
+For Each mylayer In ThisDrawing.Layers
+    If mylayer.Name = "plav_pessoassentadas" Then GoTo linha3
+Next
+    Set plav_pessoassentadas = ThisDrawing.Layers.Add("plav_pessoassentadas")
+    'plav_pessoassentadas.TrueColor = yellow
+linha3:
+
+For Each mylayer In ThisDrawing.Layers
+    If mylayer.Name = "plav_alturadoolho" Then GoTo linha4
+Next
+    Set plav_alturadoolho = ThisDrawing.Layers.Add("plav_alturadoolho")
+    'plav_alturadoolho.TrueColor = Red
+linha4:
+
+'2 insere os elementos da primeira fileira
+    olhox = Val(TextBoxolhox.Value) / 100
+    olhoy = Val(TextBoxolhoy.Value) / 100
+    insercao0(0) = 0
+    insercao0(1) = 0
+    insercao0(2) = 0
+    xs = Val(TextBoxXs.Value) / 100
+    hs = Val(TextBoxHs.Value) / 100
+    ns = Int(TextBoxNs.Value)
+    cs = Val(TextBoxCs.Value) / 100
+    ReDim insercaopl(0 To ns * 4 + 1)
+    'insere o primeiro espectador
+    insercaoh(0) = p1s(0) + olhox
+    insercaoh(1) = p1s(1) + olhoy + hs
+    insercao(0) = p1s(0) - cs - xs + olhox
+    angulorad = 3.14159265 - ThisDrawing.Utility.AngleFromXAxis(p0s, insercaoh)
+    insercao(1) = p0s(1) + (p0s(0) - insercao(0)) * Tan(angulorad)
+    insercao(2) = 0
+    insercaoh(0) = insercao(0)
+    insercaoh(1) = insercao(1) + hs
+    insercaoh(2) = insercao(2)
+    Set pessoaref = ThisDrawing.ModelSpace.InsertBlock(insercao, "pessoa", 1, 1, 1, 0)
+    pessoaref.Layer = "plav_pessoassentadas"
+    Set linhah = ThisDrawing.ModelSpace.AddLine(insercao, insercaoh)
+    linhah.Layer = "plav_alturadoolho"
+    Set linhavisao = ThisDrawing.ModelSpace.AddLine(insercao, p0s)
+    linhavisao.Layer = "plav_linhasdevisao"
+    insercaopl(0) = p1s(0)
+    insercaopl(1) = p1s(1)
+    insercaopl(2) = p1s(0)
+    insercaopl(3) = insercao(1) - olhoy
+    insercaopl(4) = insercao(0) - olhox
+    insercaopl(5) = insercao(1) - olhoy
+    
+'3 insere as próximas fileiras pelo metodo do angulo
+    For contador = 1 To ns - 1
+        angulorad = 3.14159265 - ThisDrawing.Utility.AngleFromXAxis(p0s, insercaoh)
+        insercao(0) = (p1s(0) + olhox) - cs - (xs * contador + 1)
+        If insercao(1) > p0s(1) + (p0s(0) - insercao(0)) * Tan(angulorad) Then GoTo pula
+        insercao(1) = p0s(1) + (p0s(0) - insercao(0)) * Tan(angulorad)
+pula:
+        insercaoh(0) = insercao(0)
+        insercaoh(1) = insercao(1) + hs
+        insercaopl(contador * 4 + 2) = insercaopl(contador * 4)
+        insercaopl(contador * 4 + 3) = insercao(1) - olhoy
+        insercaopl(contador * 4 + 4) = insercaopl(contador * 4 + 2) - xs
+        insercaopl(contador * 4 + 5) = insercaopl(contador * 4 + 3)
+        Set pessoaref = ThisDrawing.ModelSpace.InsertBlock(insercao, "pessoa", 1, 1, 1, 0)
+        pessoaref.Layer = "plav_pessoassentadas"
+        Set linhah = ThisDrawing.ModelSpace.AddLine(insercao, insercaoh)
+        linhah.Layer = "plav_alturadoolho"
+        Set linhavisao = ThisDrawing.ModelSpace.AddLine(insercao, p0s)
+        linhavisao.Layer = "plav_linhasdevisao"
+    Next contador
+'4 desenha o piso com os valores acumulados pela insercaopl
+    Set linhapiso = ThisDrawing.ModelSpace.AddLightWeightPolyline(insercaopl)
+    linhapiso.Layer = "plav_linhadepiso"
+'5 desenha o piso com os valores acumulados pela insercaopl
+    ZoomExtents
+    ThisDrawing.Regen (True)
+    
+End Sub

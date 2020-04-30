@@ -1,12 +1,42 @@
 [    
     {
+        "name": "Community Center",
+        "collaborators": [],
+        "years": [2006, 2006],
+        "type": "internal",
+        "link": "",
+        "folder":"thesis",
+        "tags": ["architecture", "brazil"],
+        "n_images": 5
+    },
+    {
+        "name": "Automatic Seating",
+        "collaborators": [],
+        "years": [2009, 2009],
+        "type": "internal",
+        "link": "",
+        "folder":"auto seating",
+        "tags": ["automation", "programming"],
+        "n_images": 5
+    },
+    {
+        "name": "Parametric and string-based solar shading",
+        "collaborators": [],
+        "years": [2013, 2013],
+        "type": "internal",
+        "link": "",
+        "folder":"sewing shades",
+        "tags": ["parametric modeling", "sustainability", "digital fabrication"],
+        "n_images": 5
+    },
+    {
         "name": "Remap 1",
         "collaborators": [],
         "years": [2015, 2015],
         "type": "internal",
         "link": "",
         "folder":"remap01",
-        "tags": ["architecture", "visualization", "diagramming", "data", "visual art"],
+        "tags": ["architecture", "visualization", "diagramming", "data", "visual art", "programming"],
         "n_images": 5
     },
     {
@@ -16,7 +46,7 @@
         "type": "internal",
         "link": "",
         "folder":"remap02",
-        "tags": ["architecture","visualization", "diagramming", "data", "physics", "interaction"],
+        "tags": ["architecture","visualization", "diagramming", "data", "physics", "interaction", "programming", "exhibition"],
         "n_images": 5
     },
     {
@@ -26,7 +56,17 @@
         "type": "internal",
         "link": "",
         "folder":"abig",
-        "tags": ["architecture", "generative design", "space planning", "urban design", "housing", "layout", "optimization", "south korea"],
+        "tags": ["architecture", "generative", "urban design", "housing", "layout", "optimization", "south korea", "programming", "parametric modeling"],
+        "n_images": 5
+    },
+    {
+        "name": "Rehabilitation of brazil Palace Hotel",
+        "collaborators": ["Claudia Amorim", "Jose Barros", "Renata Maciel"],
+        "years": [2018, 2018],
+        "type": "internal",
+        "link": "",
+        "folder":"bph",
+        "tags": ["architecture", "sustainability", "competition", "modernism", "brazil"],
         "n_images": 5
     },
     {
@@ -36,7 +76,7 @@
         "type": "internal",
         "link": "",
         "folder":"apt customizer",
-        "tags": ["generative design", "space planning", "housing", "layout", "shape grammar", "graph"],
+        "tags": ["generative", "housing", "layout", "shape grammar", "graph", "parametric modeling", "programming"],
         "n_images": 5
     },
     {
@@ -46,7 +86,7 @@
         "type": "internal",
         "link": "",
         "folder":"ncm",
-        "tags": ["architecture", "competition", "brasilia", "brazil"],
+        "tags": ["architecture", "competition", "brazil"],
         "n_images": 5
     },
     {
@@ -56,7 +96,27 @@
         "type": "internal",
         "link": "",
         "folder":"paracoco",
-        "tags": ["generative design", "parametric design", "digital fabrication", "cnc", "mdf", "pavilion", "sigradi", "fortaleza", "brazil"],
+        "tags": ["generative", "parametric design", "digital fabrication", "pavilion", "conference", "brazil"],
+        "n_images": 5
+    },
+    {
+        "name": "Slime Mold for Circulation",
+        "collaborators": ["Ramesh Krishnamurti"],
+        "year": [2016, 2016],
+        "type": "internal",
+        "link": "",
+        "folder":"slime mold circulation",
+        "tags": ["bio-inspired", "graph", "layout", "conference", "programming"],
+        "n_images": 5
+    },
+    {
+        "name": "Slime Mold for Data Visualization",
+        "collaborators": ["Cecilia Zorzon"],
+        "year": [2016, 2016],
+        "type": "internal",
+        "link": "",
+        "folder":"slime mold visualization",
+        "tags": ["bio-inspired", "graph", "visualization", "conference", "exhibition"],
         "n_images": 5
     },
     {
@@ -66,7 +126,7 @@
         "type": "internal",
         "link": "",
         "folder":"light wall",
-        "tags": ["generative design", "automation", "optimization", "installation"],
+        "tags": ["generative", "automation", "optimization", "installation"],
         "n_images": 5
     },
     {
@@ -76,7 +136,7 @@
         "type": "internal",
         "link": "",
         "folder":"stage design",
-        "tags": ["generative", "automation", "urban", "installation"],
+        "tags": ["generative", "parametric design", "programming", "scene", "installation"],
         "n_images": 5
     },
     {
@@ -85,38 +145,8 @@
         "year": [2007, 2007],
         "type": "internal",
         "link": "",
-        "folder":"laguna",
-        "tags": ["architecture", "landscape design", "competition", "venice", "italy"],
-        "n_images": 5
-    },
-    {
-        "name": "Parametric design and digital fabrication",
-        "collaborators": ["Marcelo Tramontano", "Renato Anelli", "Gabriela Celani"],
-        "year": [2013, 2013],
-        "type": "internal",
-        "link": "",
-        "folder":"workshop parametric iau",
-        "tags": ["architecture", "workshop", "iau-usp", "digital fabrication", "parametric design"],
-        "n_images": 5
-    },
-    {
-        "name": "Parametric design",
-        "collaborators": [],
-        "year": [2011, 2012],
-        "type": "internal",
-        "link": "",
-        "folder":"workshop parametric senac",
-        "tags": ["architecture", "workshop", "iau-usp", "digital fabrication", "parametric design"],
-        "n_images": 5
-    },
-    {
-        "name": "Constructive geometry for Architecture",
-        "collaborators": [],
-        "year": [2010, 2010],
-        "type": "internal",
-        "link": "",
-        "folder":"workshop math senac",
-        "tags": ["architecture", "workshop", "senac", "geometry", "model"],
+        "folder":"parque de la laguna",
+        "tags": ["architecture", "landscape", "competition", "italy"],
         "n_images": 5
     },
     {
@@ -126,7 +156,57 @@
         "type": "internal",
         "link": "",
         "folder":"deepcloud",
-        "tags": ["installation", "deep learning", "cmu", "digital fabrication", "autoencoder", "acadia", "point cloud"],
+        "tags": ["installation", "AI", "programming", "interaction", "cmu", "digital fabrication", "conference", "exhibition"],
+        "n_images": 5
+    },
+    {
+        "name": "Design Loop 1",
+        "collaborators": ["Ramesh Krishnamurti"],
+        "year": [2019, 2020],
+        "type": "internal",
+        "link": "",
+        "folder":"design loop",
+        "tags": ["AI", "cmu", "agent-based model", "interaction", "diagramming", "layout"],
+        "n_images": 5
+    },
+    {
+        "name": "Interactive Bubbles",
+        "collaborators": [],
+        "year": [2014, 2014],
+        "type": "internal",
+        "link": "",
+        "folder":"interactive bubbles",
+        "tags": ["agent-based model", "diagramming", "interaction", "layout"],
+        "n_images": 5
+    },
+    {
+        "name": "Workshop: Parametric Design and Digital Fabrication",
+        "collaborators": ["Marcelo Tramontano", "Renato Anelli", "Gabriela Celani"],
+        "year": [2013, 2013],
+        "type": "internal",
+        "link": "",
+        "folder":"workshop parametric iau",
+        "tags": ["architecture", "workshop", "iau-usp", "digital fabrication", "parametric design"],
+        "n_images": 5
+    },
+    {
+        "name": "Workshop: Parametric Design",
+        "collaborators": [],
+        "year": [2010, 2011],
+        "type": "internal",
+        "link": "",
+        "folder":"workshop parametric senac",
+        "tags": ["architecture", "workshop", "iau-usp", "digital fabrication", "parametric design"],
+        "n_images": 5
+    },
+    {
+        "name": "Workshop: Complex Surfaces in Architectural Design",
+        "collaborators": [],
+        "year": [2010, 2010],
+        "type": "internal",
+        "link": "",
+        "folder":"workshop math senac",
+        "tags": ["architecture", "workshop", "senac", "geometry", "model"],
         "n_images": 5
     }
 ]

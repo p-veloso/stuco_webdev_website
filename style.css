@@ -52,7 +52,7 @@ body::-webkit-scrollbar{
 }
 .screens{
 	scroll-snap-type: y mandatory;
-	scroll-snap-stop: always;
+	scroll-snap-stop: normal;
 	overflow-y: scroll;
 /*    overflow-y: hidden;
 */    height: 100vh;
@@ -83,6 +83,15 @@ body::-webkit-scrollbar{
 	overflow: auto;
 }
 
+.screen3 {
+	scroll-snap-align: start;
+	position: relative;
+	padding: 0;
+	width: 100%;
+	overflow: auto;
+}
+
+
 @keyframes fadeInFromNone {
 	0% {
 		display: none;
@@ -98,7 +107,7 @@ body::-webkit-scrollbar{
 	}
 }
 
-.background-image {
+.background_image {
 	position: relative;
 	margin: 0;
 	padding: 0;
@@ -109,7 +118,7 @@ body::-webkit-scrollbar{
 }
 .text-fit {
 	position: absolute;
-	margin-top: 15%;
+	margin-top: 30%;
 	margin-left: 10%;
 	max-width: 50%;
 	line-height: 3vw;
@@ -144,7 +153,7 @@ body::-webkit-scrollbar{
 /* Dropdown Button */
 .dropbtn {
 	position: relative;
-	background-image: url(../images/menu_flat.png);
+	background-image: url(../images/icon_menu_flat.png);
 	background-size: 30px auto;
     background-repeat: no-repeat;
     background-position: 0px 0px; 
@@ -194,3 +203,79 @@ body::-webkit-scrollbar{
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
+
+.empty{
+	margin: 0;
+	border: 0;
+	width:100%;
+	height:200px;
+	border-style: none;
+}
+
+#container{
+	position: relative;
+	margin-right: 10%;
+	margin-left: 10%;
+	padding: 0;
+	float:center;
+/*	min-width: 1000px;
+	animation: fadeInFromNone 5s ease-out;*/
+	width: 80%; 
+	height: 600px;
+	title: "press CTRL to (un)select multiple tags";
+/*	font-family: 'aileronLight';*/
+}
+/*#container:hover{
+	color: #000000;
+}
+
+#container:click{
+	border-style: solid;
+}
+
+#container:selected{
+	color: #FFFFFF;
+}*/
+
+/*[id^="ac_simple"]{
+	color: #FFFFFF;
+}*/
+
+#auto_grid {
+ 	margin-top: 300px;
+ 	margin-bottom: 300px;
+ 	display: grid;
+  	grid-template-columns: repeat(2, 1fr);
+  	grid-gap: 20px;
+  	grid-auto-rows: 300px;
+  	grid-auto-cols: 200px;
+	margin-left: 20%;
+	margin-right: 20%;
+}
+
+.snapshot{
+
+/*  height: 80%;
+  width: 80%;*/
+	vertical-align: middle;
+/*  max-width:100%;
+  max-height:100%;*/
+}
+
+.snapbutton{
+	margin-right: 10%;
+	margin-left: 10%;
+	max-width:100%;
+	max-height:100%;
+	position: relative;
+	background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: center; 
+	border: none;
+	cursor: crosshair;
+}
+
+.snapbutton:focus{
+	opacity: 0.5;
+}
+
