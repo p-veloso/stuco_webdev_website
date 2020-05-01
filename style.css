@@ -31,6 +31,7 @@
 html, body {
 	background-color: rgb(255, 255, 255);
 	overflow: hidden;
+	scroll-behavior: smooth;
 }
 
 body::-webkit-scrollbar{
@@ -43,39 +44,33 @@ body::-webkit-scrollbar{
 	margin: 0;
 	background: white;
 	opacity: 0.5;
-	/* Toggle between static and sticky */
 	position: fixed;
 /*    position: sticky;
 	position: -webkit-sticky;*/
 	top: 0px;
 	z-index: 1;
 }
-.screens{
+#screens{
 	scroll-snap-type: y mandatory;
 	scroll-snap-stop: normal;
 	overflow-y: scroll;
-/*    overflow-y: hidden;
-*/    height: 100vh;
+    height: 100vh;
 }
-.screens::-webkit-scrollbar{
+#screens::-webkit-scrollbar{
 	width: 12px;
 	background-color: #F5F5F5;
 }
 
-/*.screens div{
-	scroll-snap-align: start;
-}
-*/
 .screen1 {
-/*    background: #FFFFFF;*/    
 	scroll-snap-align: center;
 	position: relative;
-/*    margin-top: 50px;
-*/    padding: 0;
+	padding: 0;
 	width: 100%;
 	overflow: auto;
 }
 .screen2 {
+	margin-top: 200px;
+	margin-bottom: 200px;
 	scroll-snap-align: center;
 	position: relative;
 	padding: 0;
@@ -214,8 +209,6 @@ body::-webkit-scrollbar{
 
 #container{
 	position: relative;
-	margin-top: 50px;
-	margin-bottom: 100px;
 	margin-right: 10%;
 	margin-left: 10%;
 	padding: 0;
@@ -250,9 +243,8 @@ body::-webkit-scrollbar{
   	grid-template-columns: repeat(2, 1fr);
   	grid-gap: 20px;
   	grid-auto-rows: 300px;
-  	grid-auto-cols: 200px;
-	margin-left: 20%;
-	margin-right: 20%;
+	margin-left: 10%;
+	margin-right: 10%;
 }
 
 .snapshot{
@@ -267,7 +259,7 @@ body::-webkit-scrollbar{
 .snapbutton{
 	margin-right: 10%;
 	margin-left: 10%;
-	max-width:100%;
+	max-width:300px;
 	max-height:100%;
 	position: relative;
 	background-size: auto 100%;

@@ -39,8 +39,6 @@ window.onclick = function(event) {
 }
 
 function getTags(){
-
-
 }
 
 function printTags(){
@@ -65,27 +63,97 @@ $(document).keydown(function(event){
 });
 
 $(document).keyup(function(){
-    cntrlIsPressed = false;
+  cntrlIsPressed = false;
 });
 
 var cntrlIsPressed = false;
 
-function createGrid(){
-  // require(['path'], function (x) {
-  //   console.log(x);
+
+var resizing = false;
+
+function resizedw(){
+  console.log("RESIZE!!!");
+  var w = $(window).width();
+  if (w < 450){
+    console.log(1);
+    $("#auto_grid").css({"grid-template-columns": "repeat(1, 1fr)"});
+  }
+  else if (w < 900){
+    console.log(2);
+    $("#auto_grid").css({"grid-template-columns": "repeat(2, 1fr)"});
+  }   
+  else if (w < 1350){
+    console.log(3);
+    $("#auto_grid").css({"grid-template-columns": "repeat(3, 1fr)"});
+  }
+  else{
+    console.log(4);
+    $("#auto_grid").css({"grid-template-columns": "repeat(4, 1fr)"});
+  }
+}
+
+var doit;
+
+window.onload= function(){
+  clearTimeout(doit);
+  doit = setTimeout(resizedw, 100);
+};
+
+window.onresize = function(){
+  clearTimeout(doit);
+  doit = setTimeout(resizedw, 100);
+};
+
+// $(window).resize(function(){
+//   if (!resizing){
+//     resizing = true;
+//     console.log("RESIZE");
+//     var w = $(window).width();
+//     if (w < 500){
+//       $("#auto_grid").css({"grid-template-columns": "repeat(1, 1fr)"});
+//     }
+//     else if (w < 1000){
+//       $("#auto_grid").css({"grid-template-columns": "repeat(2, 1fr)"});
+//     }   
+//     else if (w < 1500){
+//       $("#auto_grid").css({"grid-template-columns": "repeat(3, 1fr)"});
+//     }
+//     else{
+//       $("#auto_grid").css({"grid-template-columns": "repeat(4, 1fr)"});
+//     }
+//   }
+//   resizing = false;
+// });
+
+
+
+
+function goToWorks(){
+  var pos = $("#auto_grid").offset();
+  $("#screens").css({"scroll-snap-type": "none"});
+  // $('#screens').animate({scrollTop: pos.top}, 2000);
+  $('#screens').animate({scrollTop: pos.top}, 2000,
+    function(){
+      console.log(2);
+      $("#screens").css({"scroll-snap-type": "y mandatory"});
+    });
+  }
+// function goToWorks(){
+//   $("#screens").css({"scroll-snap-type": "none"});
+//   var pos = $("#auto_grid").offset();
+  // $('html, body').animate({scrollTop: pos.top}, 2000, () => {
+  //   $("#screens").css({"scroll-snap-type": "y mandatory"});
   // });
+  // });
+//   $('html, body').animate({scrollTop: pos.top}, 2000);
+// }
+
+
+function createGrid(){
   $.getJSON( "archive/catalog.json", function(data) {
     for (i = 0; i < data.length; i++){
       var arr1 = ["./archive", data[i]["folder"], "thumbnail.jpg"];
       var snap_path = (arr1.join('/'));
-      // console.log(snap_path);
-
-      // var arr2 = ['<img class = "snapshot" src = "', snap_path, '">'];
-      // var img_in_div = (arr2.join(''));
-      // $("#auto_grid").append(img_in_div);
-      //<button class = "snapbutton" style="background-image: url('../archive/thesis/thumbnail.jpg');"></button>
-      // var arr2 = ['<button class = \"snapbutton\" style = \"background-image: url(\'./archive/bph/thumbnail.jpg\');\"></button>'];
-      console.log(snap_path);
       var arr2 = ['<button class = \"snapbutton\" style = \"background-image: url(\'', snap_path, '\');\"></button>'];
       var img_in_div = (arr2.join(""));
       $("#auto_grid").append(img_in_div);
@@ -93,30 +161,7 @@ function createGrid(){
     };
   });
 }
-
-  // 
-      
-  //     var path = x;
-  //     $.getJSON("archive/catalog.json", function(data) {
-  //         for (i = 0; i < data.length; i++){
-  //           var snap_path = path.join("archive", data[i]["folder"], "snapshot.jpg");
-  //           $('<div class = "snapshot"></div>').prependTo($("snap_path")); 
-  //           // snapshots.push(snap_path);
-  //         }
-  //       });
-  //   });
-    // $('<div class = "snapshot"></div>').prependTo($('#parent'));  
-
 function createChart(){
-  // const fs = require('fs');
-  // const anyc = require(['anychart-nodejs']);
-  // const JSDOM = require('jsdom').JSDOM;
-  // var jsdom = new JSDOM('<body><div id="container"></div></body>', {runScripts: 'dangerously'});
-  // const window = jsdom.window;
-
-  // // require anychart and anychart export modules
-  // const anychart = anyc(window);
-  // const anychartExport = anyc(anychart);
   $.getJSON( "archive/catalog.json", function(data) {
       var temp_data = {};
       for (i = 0; i < data.length; i++){
@@ -179,7 +224,6 @@ function createChart(){
       else{
         selected_tags.splice(i, 1);
       }
-      console.log(selected_tags);  
       // window.open(url, "_blank");
     });
 
